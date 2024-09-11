@@ -17,6 +17,8 @@ jobs:
           java-version: '17'
       - name: Build Project
         run: mvn clean install -DskipTests
+      - name: Docker logout
+        run: docker logout
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build docker image
