@@ -28,7 +28,7 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [aws-ec2]
+    runs-on: [ip-172-31-14-62]
     steps:
       - name: Pull Image from docker hub
         run: docker pull mnojpatidar111/awsdeploylearn:latest
