@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.learn.aws</groupId>
-	<artifactId>AwsDeployLearn</artifactId>
+	<artifactId>awsdeploylearn</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>AwsDeployLearn</name>
 	<description>Demo project for AwsDeployLearn</description>
