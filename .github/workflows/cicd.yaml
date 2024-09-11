@@ -22,17 +22,17 @@ jobs:
       - name: Login to docker hub
         run: docker login -u ${{secrets.DOCKER_USERNAME}} -p ${{secrets.DOCKER_PASSWORD}}
       - name: Build docker image
-        run: docker build -t mnojpatidar111/manojaws/awsdeploylearn .
+        run: docker build -t mnojpatidar111/awsdeploylearn .
       - name: Publish image to docker hub
-        run: docker push mnojpatidar111/manojaws/awsdeploylearn:latest
+        run: docker push mnojpatidar111/awsdeploylearn:latest
 
   deploy:
     needs: build
     runs-on: [aws-ec2]
     steps:
       - name: Pull Image from docker hub
-        run: docker pull mnojpatidar111/manojaws:latest
+        run: docker pull mnojpatidar111/awsdeploylearn:latest
       - name: Delete old container
         run: docker rm -f awsdeploylearn-container
       - name: Run docker container
-        run: docker run -d -p 8080:8080 --name awsdeploylearn-container manojaws/awsdeploylearn
+        run: docker run -d -p 8080:8080 --name awsdeploylearn-container mnojpatidar111/awsdeploylearn
