@@ -18,6 +18,7 @@ public class EmployeeController {
     @GetMapping("/")
     public String viewHomePage(Model model) {
         System.out.println("HOME PAGE CALLED");
+        System.out.println("HOME PAGE CALLED2");
         model.addAttribute("allemplist", employeeServiceImpl.getAllEmployee());
         return "index";
     }
