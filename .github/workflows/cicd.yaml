@@ -28,8 +28,13 @@ jobs:
 
   deploy:
     needs: build
-    runs-on: [aws-ec2]
+    runs-on: [ aws-ec2 ]
     steps:
+      - name: Add user to Docker group
+        run: sudo usermod -aG docker $USER
+        shell: bash
+      - name: Restart Docker service
+        run: sudo systemctl restart docker
       - name: Print current user
         run: whoami
       - name: Print working directory
@@ -37,6 +42,6 @@ jobs:
       - name: Pull Image from docker hub
         run: docker pull mnojpatidar111/awsdeploylearn:latest
       - name: Delete old container
-        run: docker rm -f awsdeploylearn-container
+        run: docker rm -f awsdeploylearn-container || true
       - name: Run docker container
         run: docker run -d -p 8080:8080 --name awsdeploylearn-container mnojpatidar111/awsdeploylearn
