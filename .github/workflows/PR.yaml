@@ -1,0 +1,29 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Build the project
+        run: mvn clean install
+
+      - name: Run tests
+        run: mvn test
+
+      - name: Lint check (Optional)
+        run: mvn checkstyle:check
