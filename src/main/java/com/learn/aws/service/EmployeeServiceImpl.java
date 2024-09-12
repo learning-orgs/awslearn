@@ -27,6 +27,7 @@ public class EmployeeServiceImpl {
 		try {
 			employee = employees.get(id);
 		} catch (Exception e) {
+			System.out.println(e.getMessage());
 			throw new RuntimeException("Employee not found for id : " + id);
 		}
 		return employee;
