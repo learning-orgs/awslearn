@@ -47,14 +47,14 @@ public class EmployeeControllerTest {
                 .andExpect(model().attribute("allemplist", Arrays.asList(emp1, emp2)));
     }
 
-//    @Test
-//    public void testAddNewEmployee() throws Exception {
-//        mockMvc.perform(MockMvcRequestBuilders.get("/addnew"))
-//                .andExpect(status().isOk())
-//                .andExpect(view().name("newemployee"))
-//                .andExpect(model().attributeExists("employee"))
-//                .andExpect(model().attribute("employee", new Employee()));
-//    }
+    @Test
+    public void testAddNewEmployee() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/addnew"))
+                .andExpect(status().isOk())
+                .andExpect(view().name("newemployee"))
+                .andExpect(model().attributeExists("employee"))
+                .andExpect(model().attribute("employee", new Employee()));
+    }
 
     @Test
     public void testSaveEmployee() throws Exception {
